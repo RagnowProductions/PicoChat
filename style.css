@@ -1,0 +1,30 @@
+body {
+  font-family: monospace;
+  background: #111;
+  color: #ddd;
+}
+
+#chat {
+  margin-bottom: 1em;
+}
+
+b {
+  color: #6cf;
+}
+
+div {
+  margin: 5px 0;
+}
+
+div:has(> b:contains('(you)')) {
+  color: #9f9;
+}
+
+div:has(> b) {
+  padding-left: 10px;
+}
+
+div:has(> b)::before {
+  content: "> ";
+  color: #6f6;
+}
