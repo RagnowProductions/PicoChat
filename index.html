@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PicoChat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="chat"></div>
+
+  <input id="msgInput" placeholder="Type your message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    const username = "fennkitfoxx (you)"; // placeholder
+    const chat = document.getElementById("chat");
+
+    function renderMessage(user, text, attachment=null) {
+      let div = document.createElement("div");
+      div.innerHTML = `<b>${user}&gt;</b> ${text}`;
+      if (attachment) {
+        div.innerHTML += `<br>[Attachment: <a href="${attachment.url}" target="_blank">${attachment.name}</a>, ${attachment.size}]`;
+      }
+      chat.appendChild(div);
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("msgInput");
+      renderMessage(username, input.value);
+      input.value = "";
+    }
+
+    // Demo messages
+    renderMessage("fennkitfoxx (you)", "here’s a new area and some music for it", {
+      url: "./attachments/coolarea.7z",
+      name: "coolarea.7z",
+      size: "128kb"
+    });
+    renderMessage("rogerjboi", "epic");
+    renderMessage("trainbuilder7", "what if you added a random tree...");
+  </script>
+</body>
+</html>
